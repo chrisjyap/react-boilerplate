@@ -1,3 +1,3 @@
 # React Boilerplate
 
-A React- Node- HMR- boilerplate
+A React- Node- HMR- boilerplate. WIP
