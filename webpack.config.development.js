@@ -17,29 +17,13 @@ module.exports = {
         'NODE_ENV': JSON.stringify('development')
       }
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.HotModuleReplacementPlugin()
   ],
   module: {
     loaders: [{
       test: /\.js?$/,
       exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        'presets': ['react', 'es2015'],
-        'plugins': [
-          ['react-transform', {
-            'transforms': [{
-              'transform': 'react-transform-hmr',
-              'imports': ['react'],
-              'locals': ['module']
-            }, {
-              "transform": "react-transform-catch-errors",
-              "imports": ["react", "redbox-react"]
-            }]
-          }]
-        ]
-      }
+      loaders: ['react-hot', 'babel']
     },
     { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader!autoprefixer-loader?browsers=last 10 version'},
   ]}

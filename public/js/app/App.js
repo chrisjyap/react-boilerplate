@@ -5,7 +5,7 @@ import styles from '../../sass/main.scss';
 
 ReactDOM.render(
   <div className={styles.mainApp}>
-    First app HMR
+    First app in HMR
   </div>,
   document.getElementById('content'));
 
