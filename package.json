@@ -10,12 +10,14 @@
     "cookie-parser": "1.4.2",
     "debug": "2.2.0",
     "express": "4.13.4",
+    "immutable": "3.8.1",
     "jade": "1.11.0",
     "morgan": "1.7.0",
     "react": "15.1.0",
     "react-dom": "15.1.0",
     "react-redux": "4.4.5",
     "redux": "3.5.2",
+    "redux-thunk": "2.1.0",
     "serve-favicon": "2.3.0"
   },
   "devDependencies": {
