@@ -7,3 +7,8 @@ export const startInitialize = () => ({
 export const finishInitialize = () => ({
   type: Constants.FINISH_INITIALIZE
 });
+
+export const onInputChange = (e) => ({
+  type: Constants.UPDATE_INPUT,
+  value: e.target.value
+});

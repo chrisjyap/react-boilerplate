@@ -1,5 +1,5 @@
 import sampleReducer from './sampleReducer';
 
-module.exports = {
+export default {
   sampleReducer
 }

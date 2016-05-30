@@ -1,6 +1,6 @@
 {
   "name": "react-boilerplate",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -14,6 +14,7 @@
     "jade": "1.11.0",
     "morgan": "1.7.0",
     "react": "15.1.0",
+    "react-bootstrap": "0.29.4",
     "react-dom": "15.1.0",
     "react-redux": "4.4.5",
     "redux": "3.5.2",

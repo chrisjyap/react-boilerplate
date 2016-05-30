@@ -8,7 +8,7 @@ import {
 import thunk                  from 'redux-thunk';
 import reducers               from '../reducers';
 
-import styles from '../../sass/main.scss';
+import SamplePage             from '../pages/SamplePage';
 
 export default class App extends React.Component {
   constructor (props) {
@@ -27,12 +27,11 @@ export default class App extends React.Component {
   }
 
   render () {
-    console.log('render', this.state.store);
     const { store } = this.state;
     return (
-      <div className={styles.mainApp}>
-        First app in HMR
-      </div>
+      <Provider store={store}>
+        <SamplePage />
+      </Provider>
     )
   }
 }
