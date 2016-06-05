@@ -21,6 +21,7 @@ import { createHashHistory }  from 'history';
 import reducers               from '../reducers';
 import AppPage                from '../pages/AppPage';
 import SamplePage             from '../pages/SamplePage';
+import ExamplePage            from '../pages/ExamplePage';
 
 const allReducers = combineReducers({
   ...reducers,
@@ -40,6 +41,7 @@ ReactDOM.render(
       <Redirect from='/' to='sample' />
       <Route path='/' component={AppPage}>
         <Route path='sample' component={SamplePage}/>
+        <Route path='example' component={ExamplePage}/>
       </Route>
     </Router>
   </Provider>,

@@ -7,4 +7,17 @@
   .app-container {
     padding: 10px;
   }
+  .links{
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    li {
+      cursor: pointer;
+      margin-right: 10px;
+      color: blue;
+      &.active {
+        color: black;
+      }
+    }
+  }
 }

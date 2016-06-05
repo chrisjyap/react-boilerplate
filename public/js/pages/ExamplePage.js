@@ -1,20 +1,19 @@
 import React                   from 'react';
 import { connect }             from 'react-redux';
 import { bindActionCreators }  from 'redux';
-import * as actions            from '../actions/SamplePageActions';
+import * as actions            from '../actions/ExamplePageActions';
 import { FormControl }         from 'react-bootstrap';
 
-
-class SamplePage extends React.Component {
+class ExamplePage extends React.Component {
   constructor (props) {
     super(props);
     this.actions = bindActionCreators(actions, this.props.dispatch);
   }
   render () {
-    const { inputValue } = this.props.sampleReducer;
+    const { inputValue } = this.props.exampleReducer;
     return (
       <div>
-        <h3> Sample </h3>
+        <h3> Example </h3>
         <FormControl
           type='text'
           value={inputValue}
@@ -31,6 +30,6 @@ class SamplePage extends React.Component {
 
 export default connect( state => {
   return {
-      sampleReducer: state.sampleReducer.toJS()
+      exampleReducer: state.exampleReducer.toJS()
   };
-})(SamplePage);
+})(ExamplePage);
