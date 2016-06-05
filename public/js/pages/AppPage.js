@@ -12,7 +12,9 @@ export default class extends React.Component {
         <h2> App Page </h2>
         First app in HMR
         <hr/>
-        {this.props.children}
+        <section className='app-container'>
+          {this.props.children}
+        </section>
       </section>
     );
   }
