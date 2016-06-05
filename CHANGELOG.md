@@ -6,4 +6,7 @@
   Added routing with react-router
 
 ## 0.2.1
-  Added Example Page 
+  Added Example Page
+
+## 0.2.2
+  Fixed deprecated navigation

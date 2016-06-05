@@ -5,7 +5,8 @@ import {
         Router,
         Route,
         Redirect,
-        useRouterHistory
+        useRouterHistory,
+        hashHistory
 }                             from 'react-router';
 import {
         createStore,
