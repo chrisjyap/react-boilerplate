@@ -14,10 +14,8 @@ class SamplePage extends React.Component {
   render () {
     const { inputValue } = this.props.sampleReducer;
     return (
-      <div className={styles.mainApp}>
+      <div>
         <h3> Sample Page </h3>
-        First app in HMR
-        <br/>
         <FormControl
           type='text'
           value={inputValue}

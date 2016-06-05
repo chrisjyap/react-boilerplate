@@ -4,11 +4,11 @@ var webpack = require('webpack');
 module.exports = {
   entry: [
     'webpack-hot-middleware/client?path=/__webpack_hmr',
-     './public/js/app/index.js',
+     './public/js/app/App.js',
   ],
   output: {
     path: path.resolve(__dirname, 'public/dist'),
-    filename: 'index.js',
+    filename: 'App.js',
     publicPath: '/'
   },
   plugins: [

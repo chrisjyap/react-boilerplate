@@ -1,37 +1,47 @@
 import React                  from 'react';
+import ReactDOM               from 'react-dom';
 import { Provider }           from 'react-redux';
+import {
+        Router,
+        Route,
+        Redirect,
+        hashHistory
+}                             from 'react-router';
 import {
         createStore,
         applyMiddleware,
         combineReducers
 }                             from 'redux';
+import {
+       syncHistoryWithStore,
+       routerReducer
+}                             from 'react-router-redux';
 import thunk                  from 'redux-thunk';
 import reducers               from '../reducers';
 
+import AppPage                from '../pages/AppPage';
 import SamplePage             from '../pages/SamplePage';
 
-export default class App extends React.Component {
-  constructor (props) {
-    super(props);
-  }
+const allReducers = combineReducers({
+  ...reducers,
+  routing: routerReducer
+});
 
-  componentWillMount () {
-    const allReducers = combineReducers(reducers);
-    const store = createStore(
-      allReducers,
-      applyMiddleware(thunk)
-    );
-    this.setState({
-      store
-    });
-  }
+const store = createStore(
+  allReducers,
+  applyMiddleware(thunk)
+);
 
-  render () {
-    const { store } = this.state;
-    return (
-      <Provider store={store}>
-        <SamplePage />
-      </Provider>
-    )
-  }
-}
+const history = syncHistoryWithStore(hashHistory, store);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Router history={history}>
+      <Redirect from='/' to='sample' />
+      <Route path='/' component={AppPage}>
+        <Route path='sample' component={SamplePage}/>
+      </Route>
+    </Router>
+  </Provider>,
+  document.getElementById('content')
+);
