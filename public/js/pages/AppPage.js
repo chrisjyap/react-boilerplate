@@ -2,9 +2,13 @@ import React from 'react';
 import { Link } from 'react-router';
 import styles from '../../sass/main.scss';
 
-export default class extends React.Component {
+export default class AppPage extends React.Component {
   constructor (props) {
     super(props);
+  }
+
+  onClick() {
+    this.context.router.push({}, 'example');
   }
 
   render () {
@@ -27,6 +31,7 @@ export default class extends React.Component {
             Example
           </Link>
         </div>
+        <div onClick={this.onClick.bind(this)}>Click me</div>
         <hr/>
         <section className='app-container'>
           {this.props.children}
@@ -35,3 +40,7 @@ export default class extends React.Component {
     );
   }
 }
+
+AppPage.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
