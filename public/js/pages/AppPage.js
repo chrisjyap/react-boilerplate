@@ -6,6 +6,9 @@ export default class AppPage extends React.Component {
   constructor (props) {
     super(props);
   }
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired
+  }
 
   onClick() {
     this.context.router.push({}, 'example');
@@ -40,7 +43,3 @@ export default class AppPage extends React.Component {
     );
   }
 }
-
-AppPage.contextTypes = {
-  router: React.PropTypes.object.isRequired
-};

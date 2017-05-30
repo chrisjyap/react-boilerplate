@@ -1,14 +1,16 @@
-import Immutable              from 'immutable';
-import Constants              from '../constants/ExampleConstants';
+import Constants from '../constants/ExampleConstants';
+import cloneDeep from 'lodash/cloneDeep';
 
-let initialState = {
+const initialState = {
   inputValue: 'Redux!'
 };
 
-export default (state = Immutable.fromJS(initialState), action) => {
+export default (state = initialState, action) => {
   switch(action.type){
     case Constants.UPDATE_INPUT:
-      return state.set('inputValue', action.value);
+      var newState = cloneDeep(state);
+      newState['inputValue'] = action.value;
+      return newState;
     default:
       return state;
   }

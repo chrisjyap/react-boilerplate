@@ -9,9 +9,6 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-const webpack = require('webpack');
-const config = require('./webpack.config.development');
-const compiler = webpack(config);
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
@@ -25,21 +22,27 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(webpackDevMiddleware(compiler, {
-  noInfo: true,
-  path: '/',
-  stats: {
-    colors: true,
-  }
-}));
+if(process.env.NODE_ENV === 'development') {
+  const compiler = require('webpack')(require('./webpack.config.development'));
+  app.use(webpackDevMiddleware(compiler, {
+    noInfo: true,
+    path: '/',
+    stats: {
+      colors: true,
+    }
+  }));
+  app.use(webpackHotMiddleware(compiler,{
+    log: console.log,
+    path: '/__webpack_hmr',
+    heartbeat: 10 * 1000,
+  }));
+}
+else {
+  //TODO: production
+  app.use(express.static(path.join(__dirname, 'dist')));
+}
 
-app.use(webpackHotMiddleware(compiler,{
-  log: console.log,
-  path: '/__webpack_hmr',
-  heartbeat: 10 * 1000,
-}));
 
 app.use('/', routes);
 app.use('/users', users);

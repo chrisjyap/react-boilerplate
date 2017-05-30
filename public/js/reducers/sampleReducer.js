@@ -1,19 +1,20 @@
-import Immutable              from 'immutable';
-import Constants              from '../constants/SampleConstants';
+import Constants from '../constants/SampleConstants';
 
-let initialState = {
+const initialState = {
   isInitializing : false,
   inputValue: 'Redux!'
 };
 
-export default (state = Immutable.fromJS(initialState), action) => {
+export default (state = initialState, action) => {
   switch(action.type){
-    case Constants.START_INITIALIZE:
-      return state.set('isInitializing', true);
-    case Constants.FINISH_INITIALIZE:
-      return state.set('isInitializing', false);
+    case Constants.TOGGLE_INITIALIZE:
+      var newState = {...state};
+      newState['isInitializing'] = !newState.isInitializing;
+      return newState;
     case Constants.UPDATE_INPUT:
-      return state.set('inputValue', action.value);
+      var newState = {...state};
+      newState['inputValue'] = action.value;
+      return newState;
     default:
       return state;
   }
