@@ -8,7 +8,9 @@ class ExamplePage extends React.Component {
   constructor (props) {
     super(props);
     this.actions = bindActionCreators(actions, this.props.dispatch);
+    this.inputChange = this.actions.onInputChange.bind(this);
   }
+
   render () {
     const { inputValue } = this.props.exampleReducer;
     return (
@@ -18,7 +20,7 @@ class ExamplePage extends React.Component {
           type='text'
           value={inputValue}
           placeholder='Some placeholder'
-          onChange={this.actions.onInputChange.bind(this)}
+          onChange={this.onInputChange}
         />
         <div>
           Input: {inputValue}
@@ -28,8 +30,6 @@ class ExamplePage extends React.Component {
   }
 }
 
-export default connect( state => {
-  return {
-      exampleReducer: state.exampleReducer.toJS()
-  };
-})(ExamplePage);
+export default connect(state => ({
+  exampleReducer: state.exampleReducer
+}))(ExamplePage);
