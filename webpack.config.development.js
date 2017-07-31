@@ -30,7 +30,7 @@ module.exports = {
     loaders: [{
       test: /\.js?$/,
       exclude: /node_modules/,
-      loaders: ['react-hot', 'babel']
+      loaders: ['react-hot-loader', 'babel-loader']
     },
     { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader!autoprefixer-loader?browsers=last 10 version'},
   ]}
